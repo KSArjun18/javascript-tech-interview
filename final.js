@@ -422,6 +422,82 @@ function fibonacciLogN(n) {
 // console.log(fibonacciLogN(5)); // 5
 // console.log(fibonacciLogN(6)); // 8
 // console.log(fibonacciLogN(7)); // 13
+// ----------------------------------------------------------------------------------
+
+// Rotate the matrix in clockwise direction in given array 
+// let zr = {[0,1,2],[3,4,5],[6,7,8]}       output -  [6,3,0][7,4,1][8,5,2]
+
+let zr = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8]
+  ];
+  
+  function rotateMatrixClockwise(matrix) {
+    const n = matrix.length;
+  
+    // Step 1: Transpose the matrix
+    for (let i = 0; i < n; i++) {
+      for (let j = i; j < n; j++) {
+        // Swap elements for transposition
+        [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+      }
+    }
+  
+    // Step 2: Reverse each row
+    for (let i = 0; i < n; i++) {
+      matrix[i].reverse();
+    }
+  
+    return matrix;
+  }
+  
+//   console.log(rotateMatrixClockwise(zr)); 
+
+
+// -------------------------------------------------------------------------------------------------
+  
+// Rearrange the array let arr = [2,"b",4,"d",3,"a","e","e",5,1] , So that first 5 should be no's followed by alpts.
+// o/p : [ 2,4,3,5,1,b,d,a,e,e]
+
+let arr = [2, "b", 4, "d", 3, "a", "e", "e", 5, 1];
+
+// Separate numbers and alphabets using filter
+let numbers = arr.filter(item => typeof item === 'number');
+let alphabets = arr.filter(item => typeof item === 'string');
+
+// Concatenate numbers followed by alphabets
+let result = numbers.concat(alphabets);
+
+// console.log(result);
+// --------------------------------------------------------------------------------------------
+
+// const array = [
+//   { id: 1, name: 'John' },
+//   { id: 2, name: 'Jane' },
+//   { id: 1, name: 'John' },
+//   { id: 3, name: 'Joe' },
+//   { id: 2, name: 'Jane' }
+// ];   Remove duplicates in this array of object?
+
+
+const array = [
+    { id: 1, name: 'John' },
+    { id: 2, name: 'Jane' },
+    { id: 1, name: 'John' },
+    { id: 3, name: 'Joe' },
+    { id: 2, name: 'Jane' }
+  ];
+  
+  // Using a Set to filter out duplicates based on a combination of 'id' and 'name'
+  const uniqueArray = array.filter((value, index, self) =>
+    index === self.findIndex((obj) => obj.id === value.id && obj.name === value.name)
+  );
+  
+//   console.log(uniqueArray);
+
+// ---------------------------------------------------------------------
+  
 
 // Advanced Problems:
 
